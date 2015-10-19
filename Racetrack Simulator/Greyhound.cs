@@ -14,6 +14,14 @@ namespace Racetrack_Simulator
         public PictureBox MyPictureBox = null; // My PictureBox object
         private int Location = 0; // My Location on the racetrack
         public Random Randomizer; // An instance of Random
+
+        public Greyhound(int StartingPosition, int RacetrackLength, PictureBox MyPictureBox, Random randomizer)
+        {
+            this.StartingPosition = StartingPosition;
+            this.RacetrackLength = RacetrackLength;
+            this.MyPictureBox = MyPictureBox;
+            this.Randomizer = randomizer;
+        }
         public bool Run()
         {
             // Move forward either 1, 2, 3 or 4 spaces at random

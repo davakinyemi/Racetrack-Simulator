@@ -26,5 +26,10 @@ namespace Racetrack_Simulator
             // the amount bet.
             return 0;
         }
+
+        public void setAmount(int x)
+        {
+            Amount = x;
+        }
     }
 }
