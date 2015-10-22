@@ -95,6 +95,7 @@ namespace Racetrack_Simulator
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            groupBox1.Enabled = false;
             foreach(Greyhound dog in greyhounds)
             {
                 if (dog.Run())
@@ -102,8 +103,13 @@ namespace Racetrack_Simulator
                     timer1.Stop();
                     if (MessageBox.Show("Dog #" + dog.getNumber() + " won the race!", "We have a winner!", MessageBoxButtons.OK) == DialogResult.OK)
                     {
-
+                        foreach(Bettor bettor in bettors)
+                        {
+                            bettor.Collect(dog.getNumber());
+                        }
                     }
+                    takeStartingPosition();
+                    groupBox1.Enabled = true;
                 }
             }
         }
@@ -111,6 +117,14 @@ namespace Racetrack_Simulator
         private void raceButton_Click(object sender, EventArgs e)
         {
             timer1.Start();
+        }
+
+        private void takeStartingPosition()
+        {
+            foreach(Greyhound dog in greyhounds)
+            {
+                dog.TakeStartingPosition();
+            }
         }
     }
 }

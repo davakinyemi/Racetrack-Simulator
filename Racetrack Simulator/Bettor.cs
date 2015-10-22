@@ -29,7 +29,7 @@ namespace Racetrack_Simulator
         {
             // Set my label to my bet’s description, and the label on my
             // radio button to show my cash ("Joe has 43 bucks")
-            if (MyBet == null)
+            if (MyBet == null || MyBet.getAmount() == 0)
                 MyLabel.Text = Name + " has not placed a bet yet";
             else
                 MyLabel.Text = MyBet.GetDescription();
@@ -37,14 +37,16 @@ namespace Racetrack_Simulator
             MyRadioButton.Text = Name + " has " + Cash + " bucks";
         }
         public void ClearBet() {
-            MyBet.setAmount(0); // Reset my bet so it’s zero
+            if(MyBet != null)
+                MyBet.setAmount(0); // Reset my bet so it’s zero
         } 
         public void PlaceBet(int BetAmount, int DogToWin)
         {
             if(Cash >= BetAmount)
             {
                 MyBet = new Bet(BetAmount, DogToWin, this);
-                Cash -= MyBet.getAmount();
+                if(MyLabel.Text.Equals(Name + " has not placed a bet yet"))
+                    Cash -= MyBet.getAmount();
             } else
             {
                 MyLabel.Text = Name + "does not have enough cash to place bet";
@@ -54,6 +56,10 @@ namespace Racetrack_Simulator
         public void Collect(int Winner)
         {
             // Ask my bet to pay out, clear my bet, and update my labels
+            if(MyBet != null && MyBet.getAmount() != 0)
+                Cash += MyBet.PayOut(Winner);
+            ClearBet();
+            UpdateLabels();
         }
 
         public string getName()
