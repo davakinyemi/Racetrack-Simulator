@@ -12,11 +12,11 @@ namespace Racetrack_Simulator
 {
     public partial class Form1 : Form
     {
-        private int minBet = 5;
-        private int numOfDogs = 4;
-        private int Cash = 100;
-        private int numBettors = 3;
-        Greyhound[] greyhounds;
+        private int minBet = 5; // minimum bet
+        private int numOfDogs = 4; // number of dogs
+        private int Cash = 100; // amount of money
+        private int numBettors = 3; // number of bettors
+        Greyhound[] greyhounds; 
         Bettor[] bettors;
         Control[] allPicBoxes;
         private Random randomizer = new Random();
@@ -48,12 +48,12 @@ namespace Racetrack_Simulator
         private void initializeGreyhounds()
         {
             greyhounds = new Greyhound[numOfDogs];
-            int a = allPicBoxes.Length-1;
-            for(int i = 0; i < allPicBoxes.Length; i++)
+            int a = 1;
+            for(int i = allPicBoxes.Length - 1; i >= 0; i--)
             {
                 if(!allPicBoxes[i].Name.Equals(trackPictureBox.Name))
                 {
-                    greyhounds[i] = new Greyhound(trackPictureBox.Left, trackPictureBox.Width, (PictureBox) allPicBoxes[a--], randomizer);
+                    greyhounds[i] = new Greyhound(a++, trackPictureBox.Left, trackPictureBox.Right, (PictureBox) allPicBoxes[i], randomizer);
                 }
             }
         }
@@ -80,6 +80,37 @@ namespace Racetrack_Simulator
         private void alRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             bettorNameLabel.Text = "Al";
+        }
+
+        private void betButton_Click(object sender, EventArgs e)
+        {
+            for(int i = 0; i < bettors.Length; i++)
+            {
+                if (bettors[i].MyRadioButton.Checked)
+                {
+                    bettors[i].PlaceBet((int)betNumUpDown.Value, (int)dogNumUpDown.Value);
+                }
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            foreach(Greyhound dog in greyhounds)
+            {
+                if (dog.Run())
+                {
+                    timer1.Stop();
+                    if (MessageBox.Show("Dog #" + dog.getNumber() + " won the race!", "We have a winner!", MessageBoxButtons.OK) == DialogResult.OK)
+                    {
+
+                    }
+                }
+            }
+        }
+
+        private void raceButton_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
         }
     }
 }

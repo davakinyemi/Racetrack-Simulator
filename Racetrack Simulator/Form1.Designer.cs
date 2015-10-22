@@ -28,9 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.trackPictureBox = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.joeRadioButton = new System.Windows.Forms.RadioButton();
+            this.bobRadioButton = new System.Windows.Forms.RadioButton();
+            this.alRadioButton = new System.Windows.Forms.RadioButton();
             this.raceButton = new System.Windows.Forms.Button();
             this.alBetLabel = new System.Windows.Forms.Label();
             this.bobBetLabel = new System.Windows.Forms.Label();
@@ -41,9 +46,6 @@
             this.betNumUpDown = new System.Windows.Forms.NumericUpDown();
             this.betButton = new System.Windows.Forms.Button();
             this.bettorNameLabel = new System.Windows.Forms.Label();
-            this.alRadioButton = new System.Windows.Forms.RadioButton();
-            this.bobRadioButton = new System.Windows.Forms.RadioButton();
-            this.joeRadioButton = new System.Windows.Forms.RadioButton();
             this.minBetLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,16 +56,16 @@
             this.dog3 = new System.Windows.Forms.PictureBox();
             this.dog4 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.trackPictureBox)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dogNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.betNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dog1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dog2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dog3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dog4)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // trackPictureBox
@@ -96,6 +98,53 @@
             this.panel1.Size = new System.Drawing.Size(763, 191);
             this.panel1.TabIndex = 1;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.joeRadioButton);
+            this.groupBox1.Controls.Add(this.bobRadioButton);
+            this.groupBox1.Controls.Add(this.alRadioButton);
+            this.groupBox1.Location = new System.Drawing.Point(7, 41);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(116, 86);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            // 
+            // joeRadioButton
+            // 
+            this.joeRadioButton.AutoSize = true;
+            this.joeRadioButton.Location = new System.Drawing.Point(6, 11);
+            this.joeRadioButton.Name = "joeRadioButton";
+            this.joeRadioButton.Size = new System.Drawing.Size(98, 17);
+            this.joeRadioButton.TabIndex = 1;
+            this.joeRadioButton.TabStop = true;
+            this.joeRadioButton.Text = "joeRadioButton";
+            this.joeRadioButton.UseVisualStyleBackColor = true;
+            this.joeRadioButton.CheckedChanged += new System.EventHandler(this.joeRadioButton_CheckedChanged);
+            // 
+            // bobRadioButton
+            // 
+            this.bobRadioButton.AutoSize = true;
+            this.bobRadioButton.Location = new System.Drawing.Point(6, 34);
+            this.bobRadioButton.Name = "bobRadioButton";
+            this.bobRadioButton.Size = new System.Drawing.Size(102, 17);
+            this.bobRadioButton.TabIndex = 2;
+            this.bobRadioButton.TabStop = true;
+            this.bobRadioButton.Text = "bobRadioButton";
+            this.bobRadioButton.UseVisualStyleBackColor = true;
+            this.bobRadioButton.CheckedChanged += new System.EventHandler(this.bobRadioButton_CheckedChanged);
+            // 
+            // alRadioButton
+            // 
+            this.alRadioButton.AutoSize = true;
+            this.alRadioButton.Location = new System.Drawing.Point(6, 57);
+            this.alRadioButton.Name = "alRadioButton";
+            this.alRadioButton.Size = new System.Drawing.Size(92, 17);
+            this.alRadioButton.TabIndex = 3;
+            this.alRadioButton.TabStop = true;
+            this.alRadioButton.Text = "alRadioButton";
+            this.alRadioButton.UseVisualStyleBackColor = true;
+            this.alRadioButton.CheckedChanged += new System.EventHandler(this.alRadioButton_CheckedChanged);
+            // 
             // raceButton
             // 
             this.raceButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -105,6 +154,7 @@
             this.raceButton.TabIndex = 13;
             this.raceButton.Text = "Race!";
             this.raceButton.UseVisualStyleBackColor = true;
+            this.raceButton.Click += new System.EventHandler(this.raceButton_Click);
             // 
             // alBetLabel
             // 
@@ -196,57 +246,22 @@
             // 
             // betButton
             // 
-            this.betButton.Location = new System.Drawing.Point(46, 130);
+            this.betButton.Location = new System.Drawing.Point(55, 131);
             this.betButton.Name = "betButton";
             this.betButton.Size = new System.Drawing.Size(44, 23);
             this.betButton.TabIndex = 5;
             this.betButton.Text = "Bets";
             this.betButton.UseVisualStyleBackColor = true;
+            this.betButton.Click += new System.EventHandler(this.betButton_Click);
             // 
             // bettorNameLabel
             // 
             this.bettorNameLabel.AutoSize = true;
-            this.bettorNameLabel.Location = new System.Drawing.Point(16, 135);
+            this.bettorNameLabel.Location = new System.Drawing.Point(22, 136);
             this.bettorNameLabel.Name = "bettorNameLabel";
             this.bettorNameLabel.Size = new System.Drawing.Size(24, 13);
             this.bettorNameLabel.TabIndex = 4;
             this.bettorNameLabel.Text = "Joe";
-            // 
-            // alRadioButton
-            // 
-            this.alRadioButton.AutoSize = true;
-            this.alRadioButton.Location = new System.Drawing.Point(6, 57);
-            this.alRadioButton.Name = "alRadioButton";
-            this.alRadioButton.Size = new System.Drawing.Size(92, 17);
-            this.alRadioButton.TabIndex = 3;
-            this.alRadioButton.TabStop = true;
-            this.alRadioButton.Text = "alRadioButton";
-            this.alRadioButton.UseVisualStyleBackColor = true;
-            this.alRadioButton.CheckedChanged += new System.EventHandler(this.alRadioButton_CheckedChanged);
-            // 
-            // bobRadioButton
-            // 
-            this.bobRadioButton.AutoSize = true;
-            this.bobRadioButton.Location = new System.Drawing.Point(6, 34);
-            this.bobRadioButton.Name = "bobRadioButton";
-            this.bobRadioButton.Size = new System.Drawing.Size(102, 17);
-            this.bobRadioButton.TabIndex = 2;
-            this.bobRadioButton.TabStop = true;
-            this.bobRadioButton.Text = "bobRadioButton";
-            this.bobRadioButton.UseVisualStyleBackColor = true;
-            this.bobRadioButton.CheckedChanged += new System.EventHandler(this.bobRadioButton_CheckedChanged);
-            // 
-            // joeRadioButton
-            // 
-            this.joeRadioButton.AutoSize = true;
-            this.joeRadioButton.Location = new System.Drawing.Point(6, 11);
-            this.joeRadioButton.Name = "joeRadioButton";
-            this.joeRadioButton.Size = new System.Drawing.Size(98, 17);
-            this.joeRadioButton.TabIndex = 1;
-            this.joeRadioButton.TabStop = true;
-            this.joeRadioButton.Text = "joeRadioButton";
-            this.joeRadioButton.UseVisualStyleBackColor = true;
-            this.joeRadioButton.CheckedChanged += new System.EventHandler(this.joeRadioButton_CheckedChanged);
             // 
             // minBetLabel
             // 
@@ -344,16 +359,10 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Betting Parlor";
             // 
-            // groupBox1
+            // timer1
             // 
-            this.groupBox1.Controls.Add(this.joeRadioButton);
-            this.groupBox1.Controls.Add(this.bobRadioButton);
-            this.groupBox1.Controls.Add(this.alRadioButton);
-            this.groupBox1.Location = new System.Drawing.Point(7, 41);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(116, 86);
-            this.groupBox1.TabIndex = 14;
-            this.groupBox1.TabStop = false;
+            this.timer1.Interval = 50;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -380,14 +389,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackPictureBox)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dogNumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.betNumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dog1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dog2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dog3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dog4)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -421,6 +430,7 @@
         private System.Windows.Forms.Label alBetLabel;
         private System.Windows.Forms.Button raceButton;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
